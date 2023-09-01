@@ -1,0 +1,18 @@
+CONNECTED DATABASE
+
+database_connection.go
+    DBinstance: là hàm khởi tạo trả về kết nối tới cơ sở dữ liệu MongoDB
+        - context.Withtimeout() tạo một 'context' 10s đảm bảo kết nối không bị treo quá lâu
+        - mongo.Connect()  kết nối tới MongoDB
+            + thành công: một đối tượng mongo.Client được trả về
+            + không thành công: log lỗi và ứng dụng kết thúc
+var Client *mongo.Client = DBinstance()
+    biến client xuất bên ngoài gói database sử dụng cho các tệp khác
+OpenCollection
+    trả về biến con trỏ collection kết nối đến cơ sở dữ liệu "restaurant" mở bảng có tên 'collectionName' (food, invoice, order, table,...)
+
+main.go
+    khởi tạo biến môi trường port với cổng mặc định là 8000 
+    gin.Engine khởi tạo một đối tượng router
+    router sử dụng để định nghĩa và xử lý các tuyến đường HTTP
+    gin.Logger ghi log các yêu cầu HTTP đến máy chủ
