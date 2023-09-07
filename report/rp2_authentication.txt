@@ -1,0 +1,29 @@
+AUTHENTICATION
+
+JWT? JSON WEB TOKEN
+    là một chuẩn phương tiện giúp tạo ra một chuỗi mã hóa
+    chứa dữ liệu để trao đổi thông tin giữa các hệ thống khác nhau
+    một cách an toàn, đáng tin cậy
+
+    Cấu trúc 1 JWT có 
+        + Header: chứa thông tin về loại token và thuật toán sử dụng để ký số token
+        + Payload: chứa thông tin cụ thể (thông tin người dùng, quyền truy cập hoặc ,....)
+        + Verify Signature: được tạo ra từ Header và Payload kết hợp với một khóa bí mật riêng tư
+    JWT tránh việc lưu trữ thông tin xác thực trên máy chủ và cũng cho phép các máy chủ khác nhau
+    xác minh tính hợp lệ của token mà không cần liên hệ với máy chủ ban đầu
+
+BSON MONGODB-GOLANG
+    + bson.D{slice}
+    + bson.M{map}
+    + bson.A{array}
+    + bson.E{single element inside type D}
+
+    struct tags
+        + omitempty
+        + minsize
+        + truncate
+        + inline
+
+
+GIN
+    + gin.H: type H map[string] any
