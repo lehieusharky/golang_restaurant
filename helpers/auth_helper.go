@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-
+// Kiểm tra loại User có phải là ADMIN hay không?
 func CheckUserType(c *gin.Context, role string) (err error){
 	userType := c.GetString("user_type")
 	err = nil
@@ -17,6 +17,7 @@ func CheckUserType(c *gin.Context, role string) (err error){
 	return err
 }
 
+// Kiểm tra ID user và ID có trùng với tài nguyên hay không và chặn truy cập tài nguyên nếu là USER 
 func MatchUserTypeToUid(c *gin.Context, userId string) (err error){
 	userType := c.GetString("user_type")
 	uid := c.GetString("uid")
@@ -26,6 +27,7 @@ func MatchUserTypeToUid(c *gin.Context, userId string) (err error){
 		err = errors.New("Unauthorized to access this resource")
 		return err
 	}
+	// Kiểm tra loại User có phải là ADMIN hay không?
 	err = CheckUserType(c, userType)
 	return err
 }
